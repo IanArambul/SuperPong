@@ -17,9 +17,21 @@ player = pygame.Rect((250, 200, 50, 50))
 running = True
 while running:
 
+    # set a screen color to keep refreshing background
+    screen.fill((0, 0, 0))
+
     # set our player within the game, this will be updated to multiplayer later, with constraints
     pygame.draw.rect(screen, (0, 255, 0), player)
 
+    # set up keys to move player
+    key = pygame.key.get_pressed()
+    if key[pygame.K_UP] == True:
+        player.move_ip(0, -10)
+    elif key[pygame.K_DOWN] == True:
+        player.move_ip(0, 10)
+    
+
+    # loop for event handling
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
